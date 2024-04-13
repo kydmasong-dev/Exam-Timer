@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="cache-control" content="public">
+    <meta http-equiv="expires" content=Thu, 24 Aug 2050 00:24:08 UTC+7">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">                                                                                                                          
+    <title>Examination Timer</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="responsive.js"></script>
+</head>
+
+<body onload="responsivesize()" onresize="responsivesize()" ondblclick="gofullscreen()">
+    <div class="main-container">
+        <div class="container">
+            <div id="title">
+                <!-- SVG ICDM logo -->
+                <!-- The real stuff starts here -->
+                <div id="tophead">
+                    <span id="uos">
+                        <h2>Examination Timer</h2>
+                    </span>
+                    <hr>
+                    <span id="examtype">
+                        <h3>SETUP</h3>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SET THE SECTION FOR SETTING UP THE EXAM-->
+        <div class="container">
+            <div style="width: 100%; align-content: center;">
+                <div id="getinfo" class="container">
+                    <form name="examinfo">
+                        <p>
+                            <strong>Exam Title</strong> ( <em>Optional</em> ):<br><textarea cols="60" rows="1"
+                                name="uos" autofocus="autofocus" oninput="encodeURL()"></textarea>
+                        </p>
+                        <p>
+                            Exam Venue:<br><input type="text" class="inset-shadow" name="examtype" size="60"
+                                oninput="encodeURL()">
+                        </p>
+                        <p>
+                            Reading time: <input type="text" class="inset-shadow" name="readmins" size="2"
+                                oninput="encodeURL()"> <b> minutes</b>
+                            <br>Writing time: <input type="text" class="inset-shadow" name="writehrs" size="2"
+                                oninput="encodeURL()">
+                            <b> hours</b> and <input type="text" name="writemins" size="2" oninput="encodeURL()">
+                            <b> minutes</b>
+                        </p>
+
+                        <p>
+                            Optional extra information for students:<br>
+                            <textarea name="optionalinfo" cols="60" rows="2" oninput="encodeURL()"></textarea>
+                        </p>
+
+                        <!-- Change input elements to button elements -->
+                        <button type="button" class="setup-button" id="setuptimer"
+                            onclick="validateinfo()"><i class="fas fa-cogs"></i> SETUP</button> &nbsp; &nbsp;
+                        <button type="button" class="reset-button" onclick="clearinfo()"><i class="fas fa-sync-alt"></i> RESET</button>
+                    </form>
+                    <span id="error"></span>
+                    <div id="attrib"></div>
+                </div>
+            </div>
+
+            <!-- SET THE SECTION FOR PREPARATION -->
+            <div class="container" style="border-block">
+                <div id="prepare" class="main-container" style="display:none">
+                    <p>
+                        <b>Reading time:</b>
+                        <span id="readmins"></span>
+                    </p>
+                    <p>
+                        <b>Writing time:</b>
+                        <span id="writehrs"></span>
+                        and <span id="writemins"></span>
+                    </p>
+                    <div id="optionalinfo"></div>
+                    <button type="button" class="back-button" onclick="back()"> <i class="fas fa-arrow-left"></i> BACK</button> &nbsp; &nbsp;
+                    <button type="button" class="start-button" onclick="startreading()" autofocus> <i class="fas fa-play"></i> START</button>
+
+                    <div id="pretime">Something is wrong - check if Javascript is active on your machine</div>
+                </div>
+
+                <!-- SET THE SECTION FOR EXAM TIME DISPLAY -->
+                <div class="container" style="border-block">
+                    <div id="exam" class="main-container" style="display:none">
+                        <div id="timer"></div>
+                        <div id="curtime"></div>
+                        <div id="message" class="addinfo"></div>
+                        <div id="addinfodiv">
+                            <form name="addinfoform"><textarea id="addinfo" rows="4"
+                                    oninput="updateURL()"></form></textarea>
+                        </div>
+                        <div id="control">
+                            <span id="less" title="Subtract 1 minute from current timer" onclick="less()">&minus;</span>
+                            <span id="pause" title="Pause / unpause timer" onclick="pauseplay()">&#10074;&#10074;</span>
+                            <span id="more" title="Add 1 minute to current timer" onclick="more()">&plus;</span>
+                        </div>
+                    </div>
+                    <script src="examtimer.js"></script>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Section -->
+        <div class="footer">
+    <div class="footer-content">
+        <div class="logo">
+            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhJJV3K9oXjKzAK1Jtc7WzpPPJoXPW2F2DYElo7KntghyrVTPOqt-FoV3dLBr9Mm1ohpeL9-8-Fi-K9324be7Cb7PDzrxzTHvhBVsrK37WLYmS5ZJO3w-_LUb80IjikDb2x811fMhm_taqYUPsGcYBECB3SArBxIKjBH4gRgOMrO8olyy7SyNJ4U9fV8qvW=s485" width="200px" alt="Logo">
+        </div>
+        <div class="text" id="copyright">
+            &copy; 2004 -<span id="year"></span> Examination Timer - ICT Click Digital Media. All rights reserved.
+        </div>
+    </div>
+</div>
+    </div>
+                         <script>
+    // Get the current year
+    var currentYear = new Date().getFullYear();
+    // Set the current year in the footer
+    document.getElementById("year").textContent = currentYear;
+</script>
+</body>
+
+</html>
