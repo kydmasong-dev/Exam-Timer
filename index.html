@@ -111,25 +111,21 @@
                 </div>
             </div>
         </div>
-
+<!-- Print button with print icon -->
+  <button class="print-button" onclick="printPage()">
+    <img class="print-icon" src="https://cdn-icons-png.flaticon.com/512/565/565995.png" alt="Print Icon" width="16" height="16"> PRINT
+  </button>
+  <script src="print.js"></script> <!-- Link to your JavaScript file -->
         <!-- Footer Section -->
-        <div class="footer">
-    <div class="footer-content">
-        <div class="logo">
-            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhJJV3K9oXjKzAK1Jtc7WzpPPJoXPW2F2DYElo7KntghyrVTPOqt-FoV3dLBr9Mm1ohpeL9-8-Fi-K9324be7Cb7PDzrxzTHvhBVsrK37WLYmS5ZJO3w-_LUb80IjikDb2x811fMhm_taqYUPsGcYBECB3SArBxIKjBH4gRgOMrO8olyy7SyNJ4U9fV8qvW=s485" width="200px" alt="Logo">
-        </div>
-        <div class="text" id="copyright">
-            &copy; 2004 -<span id="year"></span> Examination Timer - ICT Click Digital Media. All rights reserved.
-        </div>
-    </div>
-</div>
-    </div>
-                         <script>
-    // Get the current year
-    var currentYear = new Date().getFullYear();
-    // Set the current year in the footer
-    document.getElementById("year").textContent = currentYear;
-</script>
+        <!-- Footer Section -->
+  <div class="footer" id="copyright">
+    &copy; 2004 -<span id="year"></span> Examination Timer - ICT Click Digital Media.
+    <script>
+      // Get the current year
+      var currentYear = new Date().getFullYear();
+      // Set the current year in the footer
+      document.getElementById("year").textContent = currentYear;
+    </script>
 </body>
 
 </html>
