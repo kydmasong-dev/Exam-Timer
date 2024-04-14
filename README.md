@@ -23,3 +23,7 @@ This Markdown document describes the layout and purpose of an exam timer setup w
 - Provides control buttons to subtract time, pause/unpause the timer, and add time (`<div id="control">`).
 
 Overall, this Markdown document outlines the user interface for setting up and managing an exam timer, allowing users to input exam details, start the timer, and control its behavior during the exam. The JavaScript functions referenced in the HTML code handle the functionality of the timer, such as starting, pausing, and updating the countdown.
+
+### App Preview
+![Examination Timer](https://r2.easyimg.io/p3qokbl4m/examination_timer.jpeg)
+
